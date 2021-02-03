@@ -6,7 +6,7 @@ import (
 	"log"
 	"fmt"
 
-	"github.com/bibasoft-team/envsubst"
+	envsubst "github.com/bibasoft-team/drone-envsubst"
 )
 
 func main() {
