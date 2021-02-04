@@ -163,6 +163,17 @@ var tests = []struct {
 		},
 	},
 	{
+		Text: "${string/([a-z]+)-([0-9]+)/replacement}",
+		Node: &FuncNode{
+			Param: "string",
+			Name:  "/",
+			Args: []Node{
+				&TextNode{Value: "([a-z]+)-([0-9]+)"},
+				&TextNode{Value: "replacement"},
+			},
+		},
+	},
+	{
 		Text: "${string//substring/replacement}",
 		Node: &FuncNode{
 			Param: "string",
@@ -195,6 +206,21 @@ var tests = []struct {
 			},
 		},
 	},
+
+	//
+	// string regex function
+	//
+	// {
+	// 	Text: "${string~substring:replacement}",
+	// 	Node: &FuncNode{
+	// 		Param: "string",
+	// 		Name:  "~",
+	// 		Args: []Node{
+	// 			&TextNode{Value: "substring"},
+	// 			&TextNode{Value: "replacement"},
+	// 		},
+	// 	},
+	// },
 
 	//
 	// default value functions

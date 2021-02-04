@@ -1,6 +1,8 @@
 package envsubst
 
 import (
+	"fmt"
+	"regexp"
 	"strconv"
 	"strings"
 	"unicode"
@@ -113,6 +115,7 @@ func toSubstr(s string, args ...string) string {
 // replaceAll returns a copy of the string s with all instances
 // of the substring replaced with the replacement string.
 func replaceAll(s string, args ...string) string {
+	fmt.Printf(args[0])
 	switch len(args) {
 	case 0:
 		return s
@@ -126,13 +129,15 @@ func replaceAll(s string, args ...string) string {
 // replaceFirst returns a copy of the string s with the first
 // instance of the substring replaced with the replacement string.
 func replaceFirst(s string, args ...string) string {
+	fmt.Println(args[0])
+	var re = regexp.MustCompile(args[0])
 	switch len(args) {
 	case 0:
 		return s
 	case 1:
-		return strings.Replace(s, args[0], "", 1)
+		return re.ReplaceAllString(s, "")
 	default:
-		return strings.Replace(s, args[0], args[1], 1)
+		return re.ReplaceAllString(s, args[1])
 	}
 }
 

@@ -255,6 +255,13 @@ func acceptReplaceFunc(r rune, i int) bool {
 	}
 }
 
+func acceptRegexFunc(r rune, i int) bool {
+	return i == 1 && r == '~'
+}
+func acceptNoRegexFunc(r rune, i int) bool {
+	return i == 1 && r == '~'
+}
+
 func acceptOneEqual(r rune, i int) bool {
 	return i == 1 && r == '='
 }

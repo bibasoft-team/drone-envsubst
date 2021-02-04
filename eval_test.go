@@ -109,11 +109,11 @@ func TestExpand(t *testing.T) {
 			input:  "${stringZ//abc/xyz}",
 			output: "xyzABC123ABCxyz",
 		},
-		// replace first
+		// replace regex
 		{
-			params: map[string]string{"stringZ": "abcABC123ABCabc"},
-			input:  "${stringZ/abc/xyz}",
-			output: "xyzABC123ABCabc",
+			params: map[string]string{"stringZ": "feature/EDU-234-egeg"},
+			input:  "${stringZ/^([^A-Z]+)?([A-Z]+-[0-9]+)(.*)/$2}",
+			output: "EDU-234",
 		},
 		// delete shortest match prefix
 		{
@@ -196,7 +196,7 @@ func TestExpand(t *testing.T) {
 		// substitute with a blank string
 		{
 			params: map[string]string{"stringZ": "foo.bar"},
-			input:  `${stringZ/./}`,
+			input:  `${stringZ/\./}`,
 			output: "foobar",
 		},
 	}
